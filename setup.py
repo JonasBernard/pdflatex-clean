@@ -9,13 +9,13 @@ def read(fname):
 
 setup(
     name='pdflatex-clean',
-    version='1.0.0',
+    version='1.0.1',
     author="Jonas Bernard",
     author_email="public.jbernard@web.de",
     description="A python script that creates clean LaTeX-PDFs without active contents.",
     license="GPL-3.0",
     keywords="pdf pdflatex tex latex clean active content contents selection upload cv letter career simple print ghostscript",
-    packages=[],
+    py_modules=['pdflatex-clean'],
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     url="https://github.com/JonasBernard/pdflatex-clean",
@@ -29,8 +29,14 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Topic :: Text Processing :: Markup :: LaTeX',
         'Operating System :: Unix',
+        'Programming Language :: Python :: 3.8',
     ],
+    python_requires='>=3.8',
     entry_points=dict(
-        console_scripts='pdflatex-clean=pdflatex-clean:main'
-    )
+        console_scripts='pdflatex-clean=pdflatex_clean:main'
+    ),
+    project_urls={  # Optional
+        'Bug Reports': 'https://github.com/JonasBernard/pdflatex-clean/issues',
+        'Source': 'https://github.com/JonasBernard/pdflatex-clean',
+    },
 )
