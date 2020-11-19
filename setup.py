@@ -35,7 +35,7 @@ setup(
     entry_points=dict(
         console_scripts='pdflatex-clean=pdflatex_clean:main'
     ),
-    project_urls={  # Optional
+    project_urls={
         'Bug Reports': 'https://github.com/JonasBernard/pdflatex-clean/issues',
         'Source': 'https://github.com/JonasBernard/pdflatex-clean',
     },

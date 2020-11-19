@@ -2,6 +2,16 @@ import subprocess
 import sys, time
 import os, re
 
+def enforce_flag_value(args, flag, value):
+    pattern = re.compile(f'.*-{flag}=.*')
+    i = find((match := pattern.match(arg)) for arg in args)
+    if i >= 0:
+        if not f"-{flag}={value}" == match.group(0):
+            args[i] = f"-{flag}={value}"
+    else:
+        args.insert(0, f"-{flag}={value}")
+    return args
+
 def find(iterable):
     for index, elem in enumerate(iterable):
         if elem:
@@ -10,24 +20,18 @@ def find(iterable):
 
 def main():
     # get mutable args
-    args = sys.argv
-    # save start index of relevant args
-    index = 1
+    args = sys.argv[1:]
 
     #enforce nostop interaction mode 
-    pattern = re.compile('.*-interaction=.*')
-    i = find((match := pattern.match(arg)) for arg in args)
-    if i >= 0:
-        if not "-interaction=nonstopmode" == match.group(0):
-            args[i] = "-interaction=nonstopmode"
-    else:
-        args[0] = "-interaction=nonstopmode"
-        index = 0
+    args = enforce_flag_value(args, 'interaction', 'nonstopmode')
+
+    #enfore pdf format
+    args = enforce_flag_value(args, 'output-format', 'pdf')
 
 
     #get the .tex file from args
     inputpath = None
-    for arg in args[index:]:
+    for arg in args:
         if arg.startswith("-"):
             continue
         inputpath = arg
@@ -52,7 +56,7 @@ def main():
     print("Recongized latex pdf file:" + outputpath)
 
     procs = [
-        subprocess.Popen(['pdflatex'] + args[index:], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE),
+        subprocess.Popen(['pdflatex'] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE),
         None
     ]
 
