@@ -15,7 +15,7 @@ setup(
     description="A python script that creates clean LaTeX-PDFs without active contents.",
     license="GPL-3.0",
     keywords="pdf pdflatex tex latex clean active content contents selection upload cv letter career simple print ghostscript",
-    py_modules=['pdflatex-clean'],
+    py_modules=['pdflatex_clean'],
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     url="https://github.com/JonasBernard/pdflatex-clean",

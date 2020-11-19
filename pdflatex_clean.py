@@ -22,7 +22,7 @@ def main():
     # get mutable args
     args = sys.argv[1:]
 
-    #enforce nostop interaction mode 
+    #enforce nostop interaction mode
     args = enforce_flag_value(args, 'interaction', 'nonstopmode')
 
     #enfore pdf format
@@ -93,7 +93,6 @@ def main():
     try:
         os.remove(outputpath)
         os.rename(temppath, outputpath)
-        os.remove(temppath)
 
         print(f"Finished. Saved {outputpath}.")
     except Exception as e:
