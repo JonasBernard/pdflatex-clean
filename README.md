@@ -1,7 +1,7 @@
 # pdflatex-clean
 A python script that creates clean LaTeX-PDFs without active contents.
 
-When you create a PDF with [pdflatex](https://ctan.org/pkg/pdftex), you may have some of these recognized upcoming issues:
+When you create a PDF with [pdflatex](https://ctan.org/pkg/pdftex), you may have recognized some of these issues:
 
 - You cannot upload a PDF of e.g. letters or your CV to careers website or other websites due to 'active contents'
 - Selecting text and math equations in the output PDF is a horrible mess
